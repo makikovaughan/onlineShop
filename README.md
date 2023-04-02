@@ -1,13 +1,8 @@
-# onlineShop
-
 # Soap Online Shop
 
 \*This site is still working on progress.
 
 This is a mock Soap online shop to shop for customers and also inventory management for this soap online company.
-
-This is Demo
-[Demo](Demo.mov)
 
 I am applying my knowledges and creating this site.
 
