@@ -11,9 +11,15 @@ I am applying my knowledges and creating this site.
 
 ## Technologies
 
-Frontend: JavaScript(React)
-Backend: Java(Spring Boot)
-Database: Progres DB
+### Frontend: JavaScript(React)
+
+Folder: online-shop/src<br/>
+
+### Backend: Java(Spring Boot)
+
+Folder: soapShopsrc/main/java/com/example/soapShop/ <br/>
+
+### Database: PostgreSQL <br/>
 
 ## Installation
 
