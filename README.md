@@ -4,6 +4,9 @@
 
 [Demo](ScreenImage/demo-copy_8Lixf0dT.mp4)
 
+![Screen1](ScreenImage/Screen1.png)
+![Screen2](ScreenImage/Screen2.png)
+
 This is a mock Soap online shop to shop for customers and also inventory management for this soap online company.
 
 I am applying my knowledges and creating this site.
