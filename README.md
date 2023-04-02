@@ -6,7 +6,7 @@ This is a mock Soap online shop to shop for customers and also inventory managem
 
 I am applying my knowledges and creating this site.
 
-##Technologies
+##Technologies<br/>
 Frontend: JavaScript(React)<br/>
 Backend: Java(Spring Boot)<br/>
 Database: Progres DB<br/>
@@ -16,3 +16,17 @@ Database: Progres DB<br/>
 ```bash
 git clone https://github.com/makikovaughan/onlineShop.git
 ```
+Open Eclipse or IntelliJ and open soapShop folder.
+<br/>
+Reload Maven
+Start backend.
+
+```bash
+cd online-shop
+npm install
+npm start
+```
+
+## License
+
+Makiko Vaughan
