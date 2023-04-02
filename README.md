@@ -2,8 +2,7 @@
 
 \*This site is still working on progress.
 
-![Screenshot1](ScreenImage/Screen1.png)
-![Screenshot2](ScreenImage/Screen2.png)
+[Demo](ScreenImage/demo-copy_8Lixf0dT.mp4)
 
 This is a mock Soap online shop to shop for customers and also inventory management for this soap online company.
 
