@@ -1,4 +1,4 @@
-# Soap Online Shop
+# onlineShop# Soap Online Shop
 
 \*This site is still working on progress.
 
@@ -16,16 +16,10 @@ Database: Progres DB<br/>
 ```bash
 git clone https://github.com/makikovaughan/onlineShop.git
 ```
-
-<<<<<<< HEAD
-
-=======
-
-> > > > > > > origin/main
-> > > > > > > Open Eclipse or IntelliJ and open soapShop folder.
-> > > > > > > <br/>
-> > > > > > > Reload Maven
-> > > > > > > Start backend.
+Open Eclipse or IntelliJ and open soapShop folder.
+<br/>
+ Reload Maven
+Start backend.
 
 ```bash
 cd online-shop
@@ -36,3 +30,4 @@ npm start
 ## License
 
 Makiko Vaughan
+
