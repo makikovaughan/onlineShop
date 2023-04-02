@@ -2,6 +2,9 @@
 
 \*This site is still working on progress.
 
+![Screenshot1](ScreenImage/Screen1.png)
+![Screenshot2](ScreenImage/Screen2.png)
+
 This is a mock Soap online shop to shop for customers and also inventory management for this soap online company.
 
 I am applying my knowledges and creating this site.
@@ -20,7 +23,7 @@ git clone https://github.com/makikovaughan/onlineShop.git
 
 Open Eclipse or IntelliJ and open soapShop folder.
 <br/>
-Reload Maven
+Reload Maven <br/>
 Start backend.
 
 ```bash
