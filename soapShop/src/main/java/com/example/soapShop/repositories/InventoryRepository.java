@@ -18,4 +18,9 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long>{
 
 	Optional<Inventory> getByIdAndIsDeletedFalse(Long id);
 
+
+	List<Inventory> findAllByIsDeletedFalseOrderByIdAsc();
+
+	List<Inventory> findByIsDeletedFalseOrderByIdAsc();
+
 }

@@ -32,6 +32,8 @@ const Home = () => {
     getInventory();
   });
 
+  useEffect(() => {}, [order]);
+
   const getInventory = async () => {
     try {
       const response = await fetch("http://localhost:8080/inventory");
@@ -77,6 +79,11 @@ const Home = () => {
     }, 6000);
   };
 
+  const handleDelete = (idx, itemId, target) => {
+    setOrder(order.filter((item) => item.id !== itemId && idx !== target.id));
+    window.location.reload(false);
+  };
+
   return (
     <div>
       <NavBar />
@@ -117,15 +124,43 @@ const Home = () => {
                   </thead>
                   <tbody>
                     {order.map((item, idx) => (
-                      <tr key={item.id}>
+                      <tr key={idx}>
                         <td>{idx + 1}</td>
                         <td style={{ width: "70%" }}>
-                          <img
-                            src={item.picture}
-                            alt="soap"
-                            style={{ width: "30%", height: "30%" }}
-                          />
-                          {item.name}
+                          <Container>
+                            <Row className="d-flex justify-content-start align-items-center">
+                              <Col xs={4}>
+                                <img
+                                  src={item.picture}
+                                  alt="soap"
+                                  style={{ width: "90%", height: "100%" }}
+                                />
+                              </Col>
+                              <Col xs={8}>
+                                <Row>
+                                  <Col>{item.name}</Col>
+                                </Row>
+                                <Row>
+                                  <Col>
+                                    <Button
+                                      id={idx}
+                                      className="mt-3"
+                                      style={{
+                                        background: "#d282a6",
+                                        color: "#f7efef",
+                                        border: "0.3rem solid #f7efef",
+                                      }}
+                                      onClick={(e) =>
+                                        handleDelete(idx, item.id, e.target)
+                                      }
+                                    >
+                                      Delete
+                                    </Button>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Row>
+                          </Container>
                         </td>
                         <td>${item.price}</td>
                         <td>{item.qty}</td>

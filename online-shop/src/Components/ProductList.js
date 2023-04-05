@@ -20,19 +20,24 @@ function ProductList({ inventories }) {
   const [order, setOrder] = useRecoilState(orderState);
   const [error, setError] = useState(initialError);
 
+  useEffect(() => {}, [order]);
+  useEffect(() => {}, [customerOrder]);
+
   useEffect(() => {
-    console.log(order);
     setCustomerOrder(order);
+    console.log(order);
     console.log(customerOrder);
   }, []);
 
   const handleClick = (e) => {
-    if (customerOrder.qty === 0) {
+    if (e.target.qty === 0) {
       console.log(error);
       return;
     }
-    setOrder(customerOrder);
+    window.location.reload(false);
     console.log(e.target.id);
+    setOrder(customerOrder);
+    console.log(order);
     document.getElementsByTagName("option").value = "QTY";
     setError(false);
   };

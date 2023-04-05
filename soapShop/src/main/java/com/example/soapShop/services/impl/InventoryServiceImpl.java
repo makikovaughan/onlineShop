@@ -56,7 +56,7 @@ public class InventoryServiceImpl implements InventoryService {
 		Inventory inventory = inventoryMapper.inventoryRequestDtoToEntity(inventoryRequestDto);
 		inventory.setId(id);
 		inventoryRepository.saveAndFlush(inventory);
-		return inventoryMapper.entitiesToDtos(inventoryRepository.findAllByIsDeletedFalse());
+		return inventoryMapper.entitiesToDtos(inventoryRepository.findByIsDeletedFalseOrderByIdAsc());
 	}
 
 }
