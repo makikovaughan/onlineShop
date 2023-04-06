@@ -2,7 +2,8 @@
 
 \*This site is still working on progress.
 
-[Demo](ScreenImage/demo-copy_8Lixf0dT.mp4)
+Please click below for Demo video. <br/>
+[Demo Video](ScreenImage/Demo2.mov)
 
 ![Screen1](ScreenImage/Screen1.png)
 ![Screen2](ScreenImage/Screen2.png)
