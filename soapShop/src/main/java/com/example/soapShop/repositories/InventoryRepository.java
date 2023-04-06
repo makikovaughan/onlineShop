@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.soapShop.entities.Inventory;
 
-
 @Repository
-public interface InventoryRepository extends JpaRepository<Inventory, Long>{
+public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 
 	List<Inventory> findAllByIsDeletedFalse();
 
@@ -18,9 +17,9 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long>{
 
 	Optional<Inventory> getByIdAndIsDeletedFalse(Long id);
 
-
 	List<Inventory> findAllByIsDeletedFalseOrderByIdAsc();
 
 	List<Inventory> findByIsDeletedFalseOrderByIdAsc();
 
+	Optional<Inventory> findByNameAndPictureAndIsDeletedFalse(String name, String picture);
 }

@@ -42,6 +42,17 @@ public class InventoryServiceImpl implements InventoryService {
 
 	}
 
+	// Check duplicate
+	private boolean duplicateCheck(InventoryRequestDto inventoryRequestDto) {
+		Optional<Inventory> inventory = inventoryRepository
+				.findByNameAndPictureAndIsDeletedFalse(inventoryRequestDto.getName(), inventoryRequestDto.getPicture());
+
+		if (!inventory.isEmpty()) {
+			throw new BadRequestException("This item is duplicate. Please check your input");
+		}
+		return true;
+	}
+
 	// Get all inventories from the DB
 	@Override
 	public List<InventoryDto> getAllInventories() {
@@ -57,6 +68,21 @@ public class InventoryServiceImpl implements InventoryService {
 		inventory.setId(id);
 		inventoryRepository.saveAndFlush(inventory);
 		return inventoryMapper.entitiesToDtos(inventoryRepository.findByIsDeletedFalseOrderByIdAsc());
+	}
+
+	@Override
+	public InventoryDto createNewItem(InventoryRequestDto inventoryRequestDto) {
+		duplicateCheck(inventoryRequestDto);
+		Inventory itemToCreate = inventoryMapper.inventoryRequestDtoToEntity(inventoryRequestDto);
+		return inventoryMapper.entityToDto(inventoryRepository.saveAndFlush(itemToCreate));
+	}
+
+	@Override
+	public List<InventoryDto> deleteItem(Long id) {
+		Inventory itemToDelete = updateInventory(id);
+		itemToDelete.setDeleted(true);
+		inventoryRepository.saveAndFlush(itemToDelete);
+		return getAllInventories();
 	}
 
 }

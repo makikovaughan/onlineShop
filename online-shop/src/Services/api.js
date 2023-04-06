@@ -61,3 +61,41 @@ export const updateInventory = async (updateOrder) => {
     console.log(error);
   }
 };
+
+export const createItem = async (newItem) => {
+  try {
+    const response = await fetch(`http://localhost:8080/inventory`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newItem),
+    });
+    console.log(response);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      return jsonResponse;
+    }
+    throw new Error("Request failed.");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteItem = async (id) => {
+  try {
+    const response = await fetch(`http://localhost:8080/inventory/${id}`, {
+      method: "DELETE",
+    });
+    console.log(response);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      return jsonResponse;
+    }
+    throw new Error("Request failed.");
+  } catch (error) {
+    console.log(error);
+  }
+};

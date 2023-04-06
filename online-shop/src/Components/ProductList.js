@@ -31,15 +31,16 @@ function ProductList({ inventories }) {
 
   const handleClick = (e) => {
     if (e.target.qty === 0) {
+      setError({ isError: true, message: "Please select quantity" });
       console.log(error);
       return;
     }
-    window.location.reload(false);
     console.log(e.target.id);
     setOrder(customerOrder);
     console.log(order);
     document.getElementsByTagName("option").value = "QTY";
     setError(false);
+    window.location.reload(false);
   };
 
   return (

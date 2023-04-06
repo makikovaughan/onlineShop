@@ -3,9 +3,11 @@ package com.example.soapShop.controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +37,18 @@ public class InventoryController {
 	@CrossOrigin(origins = "*")
 	List<InventoryDto> updateInventory(@PathVariable Long id, @RequestBody InventoryRequestDto inventoryRequestDto) {
 		return inventoryService.updateInventory(id, inventoryRequestDto);
+	}
+	
+	@PostMapping
+	@CrossOrigin(origins = "*")
+	InventoryDto createNewItem(@RequestBody InventoryRequestDto inventoryRequestDto) {
+		return inventoryService.createNewItem(inventoryRequestDto);
+	}
+	
+	@DeleteMapping("/{id}")
+	@CrossOrigin(origins = "*")
+	List<InventoryDto> deleteItem(@PathVariable Long id) {
+		return inventoryService.deleteItem(id);
 	}
 
 }

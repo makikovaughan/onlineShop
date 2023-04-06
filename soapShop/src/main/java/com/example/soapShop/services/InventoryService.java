@@ -11,5 +11,9 @@ public interface InventoryService {
 
 	List<InventoryDto> updateInventory(Long id, InventoryRequestDto inventoryRequestDto);
 
+	InventoryDto createNewItem(InventoryRequestDto inventoryRequestDto);
+
+	List<InventoryDto> deleteItem(Long id);
+
 
 }

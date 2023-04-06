@@ -19,6 +19,7 @@ import Popup from "../Components/Popup";
 import { orderState, userState } from "../globalstate";
 import TotalPrice from "../Components/TotalPrice";
 import { createOrder } from "../Services/api";
+import PageFooter from "../Components/PageFooter";
 
 const Home = () => {
   const [inventories, setInventories] = useRecoilState(inventoryState);
@@ -223,12 +224,7 @@ const Home = () => {
         </Toast>
       </ToastContainer>
       <ProductList inventories={inventories} />
-      <footer>
-        <p style={{ color: "#d282a6" }}>&copy;2023 Makiko Vaughan</p>
-        <a href="http://www.freepik.com" style={{ color: "#d282a6" }}>
-          Designed by frimufilms / Freepik
-        </a>
-      </footer>
+      <PageFooter />
     </div>
   );
 };

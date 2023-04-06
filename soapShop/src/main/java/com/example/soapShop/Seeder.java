@@ -31,12 +31,12 @@ public class Seeder implements CommandLineRunner {
 		Inventory inventory3 = new Inventory();
 		Inventory inventory4 = new Inventory();
 
-		inventory1.setName("Lemon Bar Soap");
+		inventory1.setName("Macadamia Bar Soap");
 		inventory1.setPicture("./images/macadamia-soap-skin-care-treatment.jpg");
 		inventory1.setQty(10);
 		inventory1.setPrice(2.50);
 
-		inventory2.setName("Lavender Bar Soap");
+		inventory2.setName("Lemon Bar Soap");
 		inventory2.setPicture("./images/closeup-shot-handmade-scented-coffee-soap-with-cinnamon-wooden-background.jpg");
 		inventory2.setQty(20);
 		inventory2.setPrice(2.50);

@@ -6,6 +6,7 @@ import NavBar from "../Components/NavBar";
 
 import { inventoryState } from "../globalstate";
 import InventoryList from "../Components/InventoryList";
+import PageFooter from "../Components/PageFooter";
 
 const Inventory = () => {
   const [inventories, setInventories] = useRecoilState(inventoryState);
@@ -30,6 +31,7 @@ const Inventory = () => {
     <div>
       <NavBar />
       <InventoryList />
+      <PageFooter />
     </div>
   );
 };
