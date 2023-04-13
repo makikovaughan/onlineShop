@@ -99,3 +99,42 @@ export const deleteItem = async (id) => {
     console.log(error);
   }
 };
+
+export const createUser = async (user) => {
+  try {
+    const newUser = {
+      credentials: {
+        username: user.username,
+        password: user.password,
+      },
+      profile: {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
+        street: user.street,
+        city: user.city,
+        state: user.state,
+        zipcode: user.zipcode,
+      },
+    };
+
+    const response = await fetch(`http://localhost:8080/user/new-user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+    console.log(response);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      return jsonResponse;
+    }
+    throw new Error("Request failed.");
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};

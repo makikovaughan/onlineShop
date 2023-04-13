@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.soapShop.dtos.CredentialsDto;
+import com.example.soapShop.dtos.UserRequestDto;
 import com.example.soapShop.dtos.UserResponseDto;
 import com.example.soapShop.services.UserService;
 
@@ -24,6 +25,12 @@ public class UserController {
 	@CrossOrigin(origins = "*")
 	UserResponseDto getUserVerification(@RequestBody CredentialsDto credentialsDto) {
 		return userService.getUserVerification(credentialsDto);
+	}
+	
+	@PostMapping("/new-user")
+	@CrossOrigin(origins = "*")
+	UserResponseDto createUser(@RequestBody UserRequestDto userRequestDto) {
+		return userService.createUser(userRequestDto);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.soapShop.dtos.CredentialsDto;
+import com.example.soapShop.dtos.UserRequestDto;
 import com.example.soapShop.dtos.UserResponseDto;
 import com.example.soapShop.entities.User;
 import com.example.soapShop.exceptions.NotFoundException;
@@ -35,12 +36,34 @@ public class UserServiceImpl implements UserService {
 		}
 		return optionalUser.get();
 	}
+	
+	//Check duplicate user
+	private boolean checkDuplicateUser(UserRequestDto userRequestDto) {
+		Optional<User> optionalUser = userRepository.findUserByCredentialsUsername(userRequestDto.getCredentials().getUsername());
+		if(!optionalUser.isEmpty()) {
+			return true; 
+		}
+		optionalUser = userRepository.findUserByProfileEmail(userRequestDto.getProfile().getEmail());
+		if(!optionalUser.isEmpty()) {
+			return true; 
+		}
+		return false;
+	}
 
 	@Override
 	public UserResponseDto getUserVerification(CredentialsDto credentialsDto) {
 		User user = getUser(credentialsDto);
 		System.out.println(user);
 		return userMapper.entityToUserResponseDto(user);
+	}
+
+	@Override
+	public UserResponseDto createUser(UserRequestDto userRequestDto) {
+		if(checkDuplicateUser(userRequestDto)) {
+			throw new UnauthorizedException("Username or email are already used. Please select another one");
+		}
+		User user = userMapper.UserRequestDtoToEntity(userRequestDto);
+		return userMapper.entityToUserResponseDto(userRepository.saveAndFlush(user));
 	}
 
 }

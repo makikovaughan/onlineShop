@@ -6,6 +6,7 @@ import Home from "./Screen/Home";
 import Products from "./Screen/Products";
 import Login from "./Screen/Login";
 import Inventory from "./Admin/Inventory";
+import User from "./Screen/User";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/Products" element={<Products />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Inventory" element={<Inventory />} />
+        <Route path="/User" element={<User />} />
       </Routes>
     </div>
   );

@@ -33,7 +33,7 @@ public class User {
 	private Timestamp created;
 	
 	@Column(nullable = false)
-	private Boolean isAdmin;
+	private Boolean isAdmin = false;
 
 	@Embedded
 	private Credentials credentials;

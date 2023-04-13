@@ -89,7 +89,7 @@ const Home = () => {
     <div>
       <NavBar />
       <div className="jumbotron">
-        <Container>
+        <Container style={{ marginTop: "20%" }}>
           <Row>
             <Col xs={11}>
               <img

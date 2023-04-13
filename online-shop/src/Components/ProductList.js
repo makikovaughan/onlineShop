@@ -44,7 +44,7 @@ function ProductList({ inventories }) {
   };
 
   return (
-    <Container>
+    <Container className="z-0">
       <Row>
         {inventories.map((inventory, idx) => (
           <Col

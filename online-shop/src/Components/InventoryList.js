@@ -5,6 +5,9 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { inventoryState, errorState } from "../globalstate";
 import { updateInventory, createItem, deleteItem } from "../Services/api";
@@ -104,78 +107,84 @@ const InventoryList = () => {
 
   return (
     <div style={{ color: "#d282a6" }}>
-      <h1>Inventory List</h1>
-      <Table striped style={{ marginTop: "5%" }}>
-        <thead>
-          <tr>
-            <th style={{ color: "#d282a6" }}>ID</th>
-            <th style={{ color: "#d282a6" }}>Item</th>
-            <th style={{ color: "#d282a6" }}>Price</th>
-            <th style={{ color: "#d282a6" }}>Qty</th>
-            <th style={{ color: "#d282a6" }}>
-              <Button
-                className="mt-3"
-                style={{
-                  background: "#d282a6",
-                  color: "#f7efef",
-                  border: "0.3rem solid #f7efef",
-                }}
-                onClick={() => openItem()}
-              >
-                New Item
-              </Button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {inventories.map((item, idx) => (
-            <tr key={item.id}>
-              <td style={{ color: "#d282a6" }}>{item.id}</td>
-              <td style={{ width: "40%", color: "#d282a6" }}>
-                <img
-                  src={item.picture}
-                  alt="soap"
-                  style={{ width: "30%", height: "30%" }}
-                />
-                {item.name}
-              </td>
-              <td style={{ color: "#d282a6" }}>
-                ${Number.parseFloat(item.price).toFixed(2)}
-              </td>
-              <td style={{ color: "#d282a6" }}>{item.qty}</td>
-              <td>
+      <Container>
+        <Row>
+          <Col style={{ marginTop: "20%" }}>
+            <h1>Inventory List</h1>
+          </Col>
+        </Row>
+        <Table striped style={{ marginTop: "5%" }}>
+          <thead>
+            <tr>
+              <th style={{ color: "#d282a6" }}>ID</th>
+              <th style={{ color: "#d282a6" }}>Item</th>
+              <th style={{ color: "#d282a6" }}>Price</th>
+              <th style={{ color: "#d282a6" }}>Qty</th>
+              <th style={{ color: "#d282a6" }}>
                 <Button
                   className="mt-3"
-                  key={item.id}
-                  id={"button" + item.id}
                   style={{
                     background: "#d282a6",
                     color: "#f7efef",
                     border: "0.3rem solid #f7efef",
                   }}
-                  onClick={() => handleShow(idx)}
+                  onClick={() => openItem()}
                 >
-                  Update
+                  New Item
                 </Button>
-                <br />
-                <Button
-                  className="mt-3"
-                  key={"delete" + item.id}
-                  id={"delete" + item.id}
-                  style={{
-                    background: "#d282a6",
-                    color: "#f7efef",
-                    border: "0.3rem solid #f7efef",
-                  }}
-                  onClick={() => handleDelete(item.id)}
-                >
-                  Delete
-                </Button>
-              </td>
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {inventories.map((item, idx) => (
+              <tr key={item.id}>
+                <td style={{ color: "#d282a6" }}>{item.id}</td>
+                <td style={{ width: "40%", color: "#d282a6" }}>
+                  <img
+                    src={item.picture}
+                    alt="soap"
+                    style={{ width: "30%", height: "30%" }}
+                  />
+                  {item.name}
+                </td>
+                <td style={{ color: "#d282a6" }}>
+                  ${Number.parseFloat(item.price).toFixed(2)}
+                </td>
+                <td style={{ color: "#d282a6" }}>{item.qty}</td>
+                <td>
+                  <Button
+                    className="mt-3"
+                    key={item.id}
+                    id={"button" + item.id}
+                    style={{
+                      background: "#d282a6",
+                      color: "#f7efef",
+                      border: "0.3rem solid #f7efef",
+                    }}
+                    onClick={() => handleShow(idx)}
+                  >
+                    Update
+                  </Button>
+                  <br />
+                  <Button
+                    className="mt-3"
+                    key={"delete" + item.id}
+                    id={"delete" + item.id}
+                    style={{
+                      background: "#d282a6",
+                      color: "#f7efef",
+                      border: "0.3rem solid #f7efef",
+                    }}
+                    onClick={() => handleDelete(item.id)}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Container>
       <Modal
         show={show}
         onHide={handleClose}

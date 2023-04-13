@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Navigate } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
 
 import { userState, errorState } from "../globalstate";
 import NavBar from "../Components/NavBar";
@@ -72,13 +73,13 @@ const Login = () => {
             width: "35%",
             height: "100%",
             justifyContent: "center",
-            margin: "5% 5% 10% 30%",
+            margin: "0% 5% 10% 30%",
             color: "#d282a6",
           }}
         >
           <Form>
             <Form.Group className="mb-3" controlId="formBasicUsername">
-              <Form.Label>Username</Form.Label>
+              <Form.Label style={{ marginTop: "50%" }}>Username</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter username"
@@ -107,7 +108,6 @@ const Login = () => {
                 color: "#f7efef",
                 border: "0.3rem solid #f7efef",
               }}
-              // type="submit"
               onClick={() => handleClick()}
             >
               Login
@@ -116,6 +116,17 @@ const Login = () => {
               <p style={{ color: "red" }}>{error.message}</p>
             ) : null}
           </Form>
+          <div className="d-flex mt-5 justify-content-end">
+            <h6>Do you have an account?</h6>
+            <h6>
+              If not, pleasse click{" "}
+              <Nav.Link href="/User">
+                <b>
+                  <u>HERE</u>
+                </b>
+              </Nav.Link>
+            </h6>
+          </div>
         </div>
         <footer>
           <p style={{ color: "#d282a6" }}>&copy;2023 Makiko Vaughan</p>
