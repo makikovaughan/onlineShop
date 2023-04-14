@@ -42,6 +42,13 @@ const NavBar = () => {
             ) : (
               ""
             )}
+            {user.isAdmin ? (
+              <Nav.Link href="/UserUpdate" style={{ color: "#d282a6" }}>
+                User Update
+              </Nav.Link>
+            ) : (
+              ""
+            )}
           </Nav>
           <Nav className="justify-content-end flex-grow-1 pe-5 me-5">
             {!user.isLoggedIn ? (

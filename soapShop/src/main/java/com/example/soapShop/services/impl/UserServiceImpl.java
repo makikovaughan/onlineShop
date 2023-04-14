@@ -37,6 +37,15 @@ public class UserServiceImpl implements UserService {
 		return optionalUser.get();
 	}
 	
+	//Find a user by username
+	private User findUserByUsername(String username) {
+		Optional<User> optionalUser = userRepository.findUserByCredentialsUsernameAndIsDeletedFalse(username);
+		if (optionalUser.isEmpty()) {
+			throw new NotFoundException("No user found with username: " + username);
+		}
+		return optionalUser.get();
+	}
+	
 	//Check duplicate user
 	private boolean checkDuplicateUser(UserRequestDto userRequestDto) {
 		Optional<User> optionalUser = userRepository.findUserByCredentialsUsername(userRequestDto.getCredentials().getUsername());
@@ -64,6 +73,14 @@ public class UserServiceImpl implements UserService {
 		}
 		User user = userMapper.UserRequestDtoToEntity(userRequestDto);
 		return userMapper.entityToUserResponseDto(userRepository.saveAndFlush(user));
+	}
+
+	@Override
+	public UserResponseDto getUserByUsername(String username) {
+		
+		User user = findUserByUsername(username);
+		
+		return userMapper.entityToUserResponseDto(user);
 	}
 
 }

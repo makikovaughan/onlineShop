@@ -1,15 +1,17 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState, useEffect } from "react";
-import NavBar from "../Components/NavBar";
+import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
-import { inventoryState } from "../globalstate";
+import NavBar from "../Components/NavBar";
+import { inventoryState, userState } from "../globalstate";
 import InventoryList from "../Components/InventoryList";
 import PageFooter from "../Components/PageFooter";
 
 const Inventory = () => {
   const [inventories, setInventories] = useRecoilState(inventoryState);
+  const [user] = useRecoilState(userState);
 
   useEffect(() => {
     getInventory();
@@ -27,13 +29,17 @@ const Inventory = () => {
     }
   };
 
-  return (
-    <div>
-      <NavBar />
-      <InventoryList />
-      <PageFooter />
-    </div>
-  );
+  if (!user.isAdmin) {
+    return <Navigate replace to="/"></Navigate>;
+  } else {
+    return (
+      <div>
+        <NavBar />
+        <InventoryList />
+        <PageFooter />
+      </div>
+    );
+  }
 };
 
 export default Inventory;

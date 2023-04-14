@@ -10,4 +10,6 @@ public interface UserService {
 
 	UserResponseDto createUser(UserRequestDto userRequestDto);
 
+	UserResponseDto getUserByUsername(String username);
+
 }
