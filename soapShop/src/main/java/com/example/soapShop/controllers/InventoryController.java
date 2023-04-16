@@ -33,18 +33,21 @@ public class InventoryController {
 		return inventoryService.getAllInventories();
 	}
 
+	//Update inventory by product id
 	@PatchMapping({ "/{id}" })
 	@CrossOrigin(origins = "*")
 	List<InventoryDto> updateInventory(@PathVariable Long id, @RequestBody InventoryRequestDto inventoryRequestDto) {
 		return inventoryService.updateInventory(id, inventoryRequestDto);
 	}
 	
+	//Create a new inventory
 	@PostMapping
 	@CrossOrigin(origins = "*")
 	InventoryDto createNewItem(@RequestBody InventoryRequestDto inventoryRequestDto) {
 		return inventoryService.createNewItem(inventoryRequestDto);
 	}
 	
+	//Delete the inventory by id
 	@DeleteMapping("/{id}")
 	@CrossOrigin(origins = "*")
 	List<InventoryDto> deleteItem(@PathVariable Long id) {

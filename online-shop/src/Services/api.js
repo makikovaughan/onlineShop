@@ -13,7 +13,8 @@ export const createOrder = async (newOrder, username) => {
       console.log(jsonResponse);
       return jsonResponse;
     }
-    throw new Error("Request failed.");
+    const text = await response.json();
+    throw new Error(text.message);
   } catch (error) {
     console.log(error);
   }
@@ -32,7 +33,8 @@ export const getLogin = async (credentials) => {
       const jsonResponse = await response.json();
       return jsonResponse;
     }
-    throw new Error("Invalid username or password");
+    const text = await response.json();
+    throw new Error(text.message);
   } catch (error) {
     return error;
   }
@@ -56,7 +58,8 @@ export const updateInventory = async (updateOrder) => {
       console.log(jsonResponse);
       return jsonResponse;
     }
-    throw new Error("Request failed.");
+    const text = await response.json();
+    throw new Error(text.message);
   } catch (error) {
     console.log(error);
   }
@@ -77,7 +80,8 @@ export const createItem = async (newItem) => {
       console.log(jsonResponse);
       return jsonResponse;
     }
-    throw new Error("Request failed.");
+    const text = await response.json();
+    throw new Error(text.message);
   } catch (error) {
     console.log(error);
   }
@@ -94,7 +98,8 @@ export const deleteItem = async (id) => {
       console.log(jsonResponse);
       return jsonResponse;
     }
-    throw new Error("Request failed.");
+    const text = await response.json();
+    throw new Error(text.message);
   } catch (error) {
     console.log(error);
   }
@@ -103,6 +108,7 @@ export const deleteItem = async (id) => {
 export const createUser = async (user) => {
   try {
     const newUser = {
+      isAdmin: user.isAdmin,
       credentials: {
         username: user.username,
         password: user.password,
@@ -132,7 +138,63 @@ export const createUser = async (user) => {
       console.log(jsonResponse);
       return jsonResponse;
     }
-    throw new Error("Request failed.");
+    const text = await response.json();
+    throw new Error(text.message);
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const getUserByUsername = async (username) => {
+  try {
+    const response = await fetch(`http://localhost:8080/user/${username}`);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      return jsonResponse;
+    }
+    const text = await response.json();
+    throw new Error(text.message);
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const updateUserProfile = async (id, user) => {
+  try {
+    const updateUser = {
+      isAdmin: user.isAdmin,
+      credentials: {
+        username: user.username,
+      },
+      profile: {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
+        street: user.street,
+        city: user.city,
+        state: user.state,
+        zipcode: user.zipcode,
+      },
+    };
+
+    const response = await fetch(`http://localhost:8080/user/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateUser),
+    });
+    console.log(response);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      return jsonResponse;
+    }
+    const text = await response.json();
+    throw new Error(text.message);
   } catch (error) {
     console.log(error);
     return error;

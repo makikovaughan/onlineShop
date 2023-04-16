@@ -14,5 +14,5 @@ public class ProfileDto {
 	private String street;
 	private String city;
 	private String state;
-	private int zipcode;
+	private Integer zipcode;
 }

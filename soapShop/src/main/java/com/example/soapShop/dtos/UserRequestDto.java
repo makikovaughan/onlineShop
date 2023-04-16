@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserRequestDto {
 
+	private Boolean isAdmin;
 	private CredentialsDto credentials;
 	private ProfileDto profile;
 }

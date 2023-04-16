@@ -12,4 +12,6 @@ public interface UserService {
 
 	UserResponseDto getUserByUsername(String username);
 
+	UserResponseDto updateUserById(Long id, UserRequestDto userRequestDto);
+
 }

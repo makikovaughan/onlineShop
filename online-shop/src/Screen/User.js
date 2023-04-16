@@ -32,29 +32,32 @@ const User = () => {
           "Duplicate username and/or email address. Please use different username or/and email address",
       });
     } else {
-      setUser({
-        id: result.id,
-        isLoggedIn: true,
-        isAdmin: result.isAdmin,
-        username: result.username,
-        password: result.password,
-        email: result.profile.email,
-        firstName: result.profile.firstName,
-        lastName: result.profile.lastName,
-        phone: result.profile.phone,
-        street: result.profile.street,
-        city: result.profile.city,
-        state: result.profile.state,
-        zipcode: result.profile.zipcode,
-      });
+      if (!user.isAdmin) {
+        setUser({
+          id: result.id,
+          isLoggedIn: true,
+          isAdmin: result.isAdmin,
+          username: result.username,
+          password: result.password,
+          email: result.profile.email,
+          firstName: result.profile.firstName,
+          lastName: result.profile.lastName,
+          phone: result.profile.phone,
+          street: result.profile.street,
+          city: result.profile.city,
+          state: result.profile.state,
+          zipcode: result.profile.zipcode,
+        });
+      } else {
+        setUser(user);
+      }
       document.getElementById("formGridUserName").value = "";
       document.getElementById("formGridPassword").value = "";
       document.getElementById("formGridFirstName").value = "";
       document.getElementById("formGridLastName").value = "";
       document.getElementById("formGridEmail").value = "";
       document.getElementById("formGridPhone").value = "";
-      document.getElementById("formGridAddress1").value = "";
-      document.getElementById("formGridAddress2").value = "";
+      document.getElementById("formGridAddress").value = "";
       document.getElementById("formGridCity").value = "";
       document.getElementById("formGridState").value = "Choose...";
       document.getElementById("formGridZip").value = "";
@@ -91,14 +94,12 @@ const User = () => {
     const temp = {
       username: document.getElementById("formGridUserName").value,
       password: document.getElementById("formGridPassword").value,
+      isAdmin: false,
       firstName: document.getElementById("formGridFirstName").value,
       lastName: document.getElementById("formGridLastName").value,
       email: document.getElementById("formGridEmail").value,
       phone: document.getElementById("formGridPhone").value,
-      street:
-        document.getElementById("formGridAddress1").value +
-        " " +
-        document.getElementById("formGridAddress2").value,
+      street: document.getElementById("formGridAddress").value,
       city: document.getElementById("formGridCity").value,
       state: document.getElementById("formGridState").value,
       zipcode: document.getElementById("formGridZip").value,
@@ -110,7 +111,7 @@ const User = () => {
 
   //   useEffect(() => {}, [error]);
   useEffect(() => {}, [user]);
-  if (user.isLoggedIn) {
+  if (user.isLoggedIn && !user.isAdmin) {
     return <Navigate replace to="/"></Navigate>;
   } else {
     return (
@@ -162,14 +163,9 @@ const User = () => {
               </Form.Group>
             </Row>
 
-            <Form.Group className="mb-3" controlId="formGridAddress1">
+            <Form.Group className="mb-3" controlId="formGridAddress">
               <Form.Label>Address*</Form.Label>
               <Form.Control placeholder="1234 Main St" />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formGridAddress2">
-              <Form.Label>Address 2</Form.Label>
-              <Form.Control placeholder="Apartment, studio, or floor" />
             </Form.Group>
 
             <Row className="mb-3">

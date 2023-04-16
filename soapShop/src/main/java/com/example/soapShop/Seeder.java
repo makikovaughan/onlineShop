@@ -74,10 +74,10 @@ public class Seeder implements CommandLineRunner {
 		profile1.setFirstName("John");
 		profile1.setLastName("Doe");
 		profile1.setStreet("111 Defg Ave");
-		profile1.setCity("Alpharetta");
+		profile1.setCity("New York City");
 		profile1.setEmail("johndoe@gmail.com");
 		profile1.setPhone("111-111-1111");
-		profile1.setState("Georgia");
+		profile1.setState("NY");
 		profile1.setZipcode(30004);
 
 		profile2.setFirstName("Jane");
@@ -86,16 +86,16 @@ public class Seeder implements CommandLineRunner {
 		profile2.setCity("Decatur");
 		profile2.setEmail("janedoe@gmail.com");
 		profile2.setPhone("222-222-2222");
-		profile2.setState("Georgia");
+		profile2.setState("GA");
 		profile2.setZipcode(30380);
 
 		profile3.setFirstName("Randy");
 		profile3.setLastName("Vaughan");
-		profile3.setStreet("123 Abc Street");
+		profile3.setStreet("123 Abc Street #123");
 		profile3.setCity("Atlanta");
 		profile3.setEmail("randyvaughan@gmail.com");
 		profile3.setPhone("123-123-1234");
-		profile3.setState("Georgia");
+		profile3.setState("GA");
 		profile3.setZipcode(30350);
 
 		User user1 = new User();

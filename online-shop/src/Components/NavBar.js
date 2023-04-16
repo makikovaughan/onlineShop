@@ -35,34 +35,35 @@ const NavBar = () => {
             <Nav.Link href="/Products" style={{ color: "#d282a6" }}>
               Products
             </Nav.Link>
-            {user.isAdmin ? (
+            {user.isAdmin && (
               <Nav.Link href="/Inventory" style={{ color: "#d282a6" }}>
                 Inventory List
               </Nav.Link>
-            ) : (
-              ""
             )}
-            {user.isAdmin ? (
+            {user.isAdmin && (
+              <Nav.Link href="/User" style={{ color: "#d282a6" }}>
+                Create User
+              </Nav.Link>
+            )}
+            {user.isAdmin && (
               <Nav.Link href="/UserUpdate" style={{ color: "#d282a6" }}>
                 User Update
               </Nav.Link>
-            ) : (
-              ""
             )}
           </Nav>
-          <Nav className="justify-content-end flex-grow-1 pe-5 me-5">
+          <Nav className="justify-content-end flex-grow-1 pe-5 me-3">
             {!user.isLoggedIn ? (
               <Nav.Link href="/Login" style={{ color: "#d282a6" }}>
                 Login
               </Nav.Link>
             ) : (
-              <p className="mt-5 me-3 pt-4" style={{ color: "#d282a6" }}>
+              <p className="mt-4 me-2" style={{ color: "#d282a6" }}>
                 Username: {user.username}
               </p>
             )}
             {user.isLoggedIn ? (
               <Nav.Link
-                className="m-5 pt-4"
+                className="mt-3 me-2"
                 href="/Login"
                 onClick={() => {
                   setUser({});

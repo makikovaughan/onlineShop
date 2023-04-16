@@ -2,6 +2,7 @@ package com.example.soapShop.controllers;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,11 +38,18 @@ public class UserController {
 		return userService.createUser(userRequestDto);
 	}
 	
-	//Update the user information by the admin.
+	//Get the user information by user id
 	@GetMapping("/{username}")
 	@CrossOrigin(origins = "*")
 	UserResponseDto getUserByUserName(@PathVariable String username) {
 		return userService.getUserByUsername(username);
 	}
+	
+	@PatchMapping("/{id}")
+	@CrossOrigin(origins = "*")
+	UserResponseDto updateUserById(@PathVariable Long id, @RequestBody UserRequestDto userRequestDto) {
+		return userService.updateUserById(id, userRequestDto);
+	}
+	
 
 }
