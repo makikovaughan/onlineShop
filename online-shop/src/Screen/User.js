@@ -31,6 +31,7 @@ const User = () => {
         message:
           "Duplicate username and/or email address. Please use different username or/and email address",
       });
+      setUser(user);
     } else {
       if (!user.isAdmin) {
         setUser({
