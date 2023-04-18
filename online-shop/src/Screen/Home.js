@@ -11,7 +11,7 @@ import ToastContainer from "react-bootstrap/ToastContainer";
 import Toast from "react-bootstrap/Toast";
 
 import NavBar from "../Components/NavBar";
-import soap from "../Assets/15160.jpg";
+import soap from "../Assets/mainPage2.jpg";
 import ProductList from "../Components/ProductList";
 import { inventoryState } from "../globalstate";
 import cart from "../Assets/shopping-cart.png";
@@ -89,20 +89,45 @@ const Home = () => {
     <div>
       <NavBar />
       <div className="jumbotron">
-        <Container style={{ marginTop: "20%" }}>
-          <Row>
-            <Col xs={11}>
-              <img
-                src={soap}
-                alt="Soap bottles"
-                style={{ width: "70%", height: "30rem" }}
-              />
+        <Container
+          style={{
+            width: "100%",
+            height: "45rem",
+            color: "#d282a6",
+            backgroundImage: `linear-gradient(
+              rgba(251, 194, 209, 1), rgba(196, 196, 196, 0), rgba(251, 194, 209, 1)
+            ),url(${soap})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            display: "grid",
+          }}
+        >
+          <Row style={{ marginTop: "10%" }}>
+            <Col
+              xs={10}
+              md={11}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <h1
+                style={{
+                  color: "#fb6f92",
+                  fontSize: "5rem",
+                  marginBottom: "10%",
+                }}
+              >
+                Organic Soap Shop
+              </h1>
             </Col>
-            <Col xs={1}>
+            <Col xs={2} md={1}>
               <img
                 src={cart}
                 alt="cart"
-                style={{ width: "50%", height: "3rem" }}
+                style={{ width: "60%", height: "3rem" }}
                 onClick={togglePopup}
               />
             </Col>

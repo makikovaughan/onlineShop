@@ -109,6 +109,7 @@ const UserUpdate = () => {
         document.getElementById("formGridState").value = "Choose...";
         document.getElementById("formGridZip").value = "";
         setUsername("");
+        setUserId("");
         setError(initialError);
       }
     }

@@ -90,14 +90,14 @@ const Products = () => {
       <NavBar />
       <Container>
         <Row>
-          <Col style={{ marginTop: "20%" }} xs={11}>
+          <Col style={{ marginTop: "20%" }} xs={10}>
             <h1 style={{ color: "#d282a6", marginBottom: "4%" }}>SOAPS</h1>
           </Col>
-          <Col style={{ marginTop: "20%" }} xs={1}>
+          <Col style={{ marginTop: "15%" }} xs={2}>
             <img
               src={cart}
               alt="cart"
-              style={{ width: "50%", height: "3rem", marginTop: "20%" }}
+              style={{ width: "30%", height: "3rem", marginTop: "20%" }}
               onClick={togglePopup}
             />
           </Col>

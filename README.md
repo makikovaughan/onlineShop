@@ -3,7 +3,7 @@
 \*This site is still working on progress.
 
 Please click below for Demo video. <br/>
-[Demo Video](ScreenImage/Demo2.mov)
+[Demo Video](ScreenImage/Demo.mp4)
 
 ![Screen1](ScreenImage/Screen1.png)
 ![Screen2](ScreenImage/Screen2.png)
